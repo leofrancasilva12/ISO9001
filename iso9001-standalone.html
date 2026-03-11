@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ISO 9001:2015 — Sistema de Gestão da Qualidade</title>
+  <style>
+/* ============================================================
+   ISO 9001 — Minimalist Presentation Site
+   ============================================================ */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0b0f1a;
+  --bg-alt:    #0f1525;
+  --surface:   #151d30;
+  --border:    rgba(255,255,255,0.07);
+  --accent:    #2e7cf6;
+  --accent-2:  #5b9eff;
+  --text:      #e4e8f0;
+  --muted:     #7a8598;
+  --white:     #ffffff;
+
+  --font:      system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --radius:    10px;
+  --nav-h:     64px;
+  --trans:     0.3s ease;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a { color: var(--accent-2); text-decoration: none; transition: color var(--trans); }
+a:hover { color: var(--white); }
+
+strong { color: var(--white); font-weight: 600; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 3px; }
+
+/* NAV */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 100;
+  background: rgba(11,15,26,0.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-logo { font-size: 1.1rem; letter-spacing: 0.05em; color: var(--muted); flex-shrink: 0; cursor:pointer; }
+.nav-logo strong { color: var(--accent); }
+
+.nav-links { display: flex; list-style: none; gap: 0.25rem; margin-left: auto; }
+.nav-links a {
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  transition: color var(--trans), background var(--trans);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--white); background: var(--surface); }
+
+.nav-toggle {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px; margin-left: auto;
+}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    display: none; flex-direction: column;
+    position: absolute; top: var(--nav-h); left: 0; right: 0;
+    background: var(--bg-alt); border-bottom: 1px solid var(--border);
+    padding: 1rem 1.5rem; gap: 0.25rem;
+  }
+  .nav-links.open { display: flex; }
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: calc(var(--nav-h) + 2rem) 1.5rem 4rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px; pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; top: 20%; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(46,124,246,0.12), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content { max-width: 560px; z-index: 1; }
+.hero-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+.hero-content h1 { font-size: clamp(3.5rem, 8vw, 6rem); font-weight: 800; line-height: 1; color: var(--white); margin-bottom: 0.5rem; }
+.hero-content h1 span { color: var(--accent); }
+.hero-sub { font-size: 1.1rem; color: var(--muted); margin-bottom: 1.5rem; letter-spacing: 0.03em; }
+.hero-desc { font-size: 1rem; color: var(--text); margin-bottom: 2.5rem; max-width: 440px; }
+
+.btn-primary {
+  display: inline-block; background: var(--accent); color: var(--white);
+  padding: 0.75rem 1.75rem; border-radius: var(--radius); font-weight: 600; font-size: 0.9rem;
+  transition: background var(--trans), transform var(--trans), box-shadow var(--trans);
+}
+.btn-primary:hover { background: var(--accent-2); color: var(--white); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(46,124,246,0.35); }
+
+.btn-secondary {
+  display: inline-block; border: 1px solid var(--border); color: var(--accent-2);
+  padding: 0.5rem 1.1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 500;
+  transition: border-color var(--trans), background var(--trans), color var(--trans); margin-top: 0.75rem;
+}
+.btn-secondary:hover { border-color: var(--accent); background: rgba(46,124,246,0.08); color: var(--white); }
+
+.hero-badge {
+  position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+  width: clamp(180px, 22vw, 280px); color: var(--accent-2); opacity: 0.25;
+  pointer-events: none; z-index: 0; animation: rotate-slow 60s linear infinite;
+}
+@keyframes rotate-slow { to { transform: translateY(-50%) rotate(360deg); } }
+.badge-iso  { font-size: 32px; font-weight: 800; fill: currentColor; }
+.badge-num  { font-size: 44px; font-weight: 900; fill: currentColor; }
+.badge-year { font-size: 16px; font-weight: 400; fill: currentColor; letter-spacing: 0.1em; }
+@media (max-width: 900px) { .hero-badge { display: none; } }
+@media (max-width: 600px) { .hero { align-items: flex-start; padding-top: calc(var(--nav-h) + 3rem); } }
+
+/* SECTIONS */
+.section { padding: 5rem 1.5rem; }
+.section-alt { background: var(--bg-alt); }
+.container { max-width: 1000px; margin: 0 auto; }
+.section-tag { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; font-weight: 600; }
+.section > .container > h2, .section-alt > .container > h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 800; color: var(--white); margin-bottom: 1.25rem; line-height: 1.2; }
+.section-intro { max-width: 660px; color: var(--muted); margin-bottom: 3rem; font-size: 1.05rem; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 2rem; }
+.two-col-center { align-items: center; }
+.col-text p { margin-bottom: 1rem; color: var(--text); }
+@media (max-width: 700px) { .two-col { grid-template-columns: 1fr; gap: 2rem; } }
+
+.col-cards { display: flex; flex-direction: column; gap: 1rem; }
+.info-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; transition: border-color var(--trans), transform var(--trans); }
+.info-card:hover { border-color: rgba(46,124,246,0.4); transform: translateY(-2px); }
+.info-icon { color: var(--accent); font-size: 0.65rem; margin-bottom: 0.5rem; }
+.info-card h3 { font-size: 0.95rem; color: var(--white); margin-bottom: 0.35rem; }
+.info-card p  { font-size: 0.875rem; color: var(--muted); }
+
+/* PRINCIPLES */
+.principles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 0.5rem; }
+.principle-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.5rem; position: relative; overflow: hidden; cursor: default;
+  transition: border-color var(--trans), transform var(--trans), background var(--trans);
+  opacity: 0; transform: translateY(20px);
+}
+.principle-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease, border-color var(--trans), background var(--trans); }
+.principle-card:hover { border-color: var(--accent); background: rgba(46,124,246,0.06); transform: translateY(-3px); }
+.p-num { position: absolute; top: 1rem; right: 1rem; font-size: 1.8rem; font-weight: 900; color: var(--border); line-height: 1; pointer-events: none; transition: color var(--trans); }
+.principle-card:hover .p-num { color: rgba(46,124,246,0.15); }
+.principle-card h3 { font-size: 0.9rem; color: var(--white); margin-bottom: 0.5rem; font-weight: 600; }
+.principle-card p  { font-size: 0.825rem; color: var(--muted); }
+
+/* TIMELINE */
+.timeline { position: relative; margin-top: 1rem; }
+.timeline::before { content: ''; position: absolute; left: 22px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), transparent); }
+.tl-item { display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; opacity: 0; transform: translateX(-20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.tl-item.visible { opacity: 1; transform: translateX(0); }
+.tl-num { flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 800; color: var(--accent); position: relative; z-index: 1; }
+.tl-body { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; flex: 1; transition: border-color var(--trans); }
+.tl-body:hover { border-color: rgba(46,124,246,0.3); }
+.tl-body h3 { font-size: 0.95rem; color: var(--white); margin-bottom: 0.3rem; }
+.tl-body p  { font-size: 0.85rem; color: var(--muted); }
+
+/* PDCA */
+.pdca-diagram { display: flex; justify-content: center; align-items: center; }
+.pdca-ring { position: relative; width: 280px; height: 280px; }
+.pdca-step { position: absolute; width: 100px; height: 100px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: default; transition: transform var(--trans), box-shadow var(--trans); border: 2px solid transparent; }
+.pdca-step:hover { transform: scale(1.08); z-index: 2; }
+.pdca-p { top: 0; left: 0;    background: rgba(46,124,246,0.15); border-color: rgba(46,124,246,0.5); }
+.pdca-d { top: 0; right: 0;   background: rgba(91,158,255,0.12); border-color: rgba(91,158,255,0.4); }
+.pdca-c { bottom: 0; right: 0; background: rgba(46,124,246,0.1);  border-color: rgba(46,124,246,0.35); }
+.pdca-a { bottom: 0; left: 0;  background: rgba(91,158,255,0.1);  border-color: rgba(91,158,255,0.35); }
+.pdca-letter { font-size: 1.8rem; font-weight: 900; color: var(--accent-2); line-height: 1; }
+.pdca-word   { font-size: 0.7rem; color: var(--muted); margin-top: 2px; font-weight: 500; }
+.pdca-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 90px; height: 90px; border-radius: 50%; background: var(--surface); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.65rem; color: var(--muted); line-height: 1.3; font-weight: 500; }
+.pdca-ring::before, .pdca-ring::after { content: ''; position: absolute; border: 1px dashed rgba(46,124,246,0.25); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
+.pdca-ring::before { width: 155px; height: 155px; }
+.pdca-ring::after  { width: 200px; height: 200px; }
+@media (max-width: 700px) { .pdca-ring { width: 240px; height: 240px; } .pdca-step { width: 88px; height: 88px; } .pdca-center { width: 80px; height: 80px; } }
+
+/* STEPS */
+.steps-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 1rem; position: relative; }
+.step-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.5rem; display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; position: relative; transition: border-color var(--trans); opacity: 0; transform: translateY(24px); }
+.step-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease, border-color var(--trans); }
+.step-card:hover { border-color: var(--accent); }
+.step-card:not(:last-child) { border-right: none; border-radius: 0; }
+.step-card:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+.step-card:last-child  { border-radius: 0 var(--radius) var(--radius) 0; }
+.step-number { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: var(--white); font-size: 1rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.step-content h3 { font-size: 0.95rem; color: var(--white); margin-bottom: 0.5rem; }
+.step-content p  { font-size: 0.85rem; color: var(--muted); }
+.step-arrow { position: absolute; right: -16px; top: 50%; transform: translateY(-50%); color: var(--accent); font-size: 1.25rem; z-index: 2; background: var(--bg); padding: 2px; }
+@media (max-width: 768px) {
+  .steps-row { grid-template-columns: 1fr; }
+  .step-card:not(:last-child) { border-right: 1px solid var(--border); border-bottom: none; }
+  .step-card { border-radius: 0 !important; }
+  .step-card:first-child { border-radius: var(--radius) var(--radius) 0 0 !important; }
+  .step-card:last-child  { border-radius: 0 0 var(--radius) var(--radius) !important; }
+  .step-arrow { display: none; }
+}
+
+/* MEDIA */
+.media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+.media-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color var(--trans), transform var(--trans); }
+.media-card:hover { border-color: rgba(46,124,246,0.4); transform: translateY(-3px); }
+.media-thumb { position: relative; background: var(--bg); overflow: hidden; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+.media-thumb-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.media-card:hover .media-thumb-img img { transform: scale(1.04); }
+.thumb-expand { position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(11,15,26,0.7); border: 1px solid var(--border); border-radius: 6px; padding: 6px; cursor: pointer; opacity: 0; transition: opacity var(--trans), background var(--trans); }
+.media-card:hover .thumb-expand { opacity: 1; }
+.thumb-expand:hover { background: var(--accent); }
+.thumb-expand svg { width: 16px; height: 16px; stroke: var(--white); display: block; }
+.media-thumb-pdf { padding: 2rem; background: var(--bg-alt); }
+.media-thumb-pdf svg { width: 80px; height: auto; color: var(--accent); }
+.pdf-label { font-size: 14px; font-weight: 800; fill: var(--accent); }
+.media-info { padding: 1.25rem 1.5rem; }
+.media-type { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 0.4rem; }
+.media-info h3 { font-size: 1rem; color: var(--white); margin-bottom: 0.4rem; }
+.media-info p  { font-size: 0.85rem; color: var(--muted); }
+
+/* FOOTER */
+.footer { background: var(--bg); border-top: 1px solid var(--border); padding: 2.5rem 1.5rem; text-align: center; }
+.footer p { color: var(--muted); font-size: 0.85rem; }
+.footer-sub { font-size: 0.75rem; margin-top: 0.35rem; opacity: 0.6; }
+
+/* LIGHTBOX */
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 200; align-items: center; justify-content: center; backdrop-filter: blur(8px); animation: lb-in 0.2s ease; }
+.lightbox.open { display: flex; }
+@keyframes lb-in { from { opacity: 0; } to { opacity: 1; } }
+.lightbox img { max-width: 90vw; max-height: 88vh; border-radius: var(--radius); box-shadow: 0 30px 80px rgba(0,0,0,0.6); object-fit: contain; }
+.lightbox-close { position: absolute; top: 1.25rem; right: 1.5rem; background: none; border: none; color: var(--muted); font-size: 2rem; line-height: 1; cursor: pointer; transition: color var(--trans); font-weight: 300; }
+.lightbox-close:hover { color: var(--white); }
+
+.fade-hidden { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.fade-hidden.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <span class="nav-logo">ISO <strong>9001</strong></span>
+      <ul class="nav-links">
+        <li><a href="#o-que-e">O que é</a></li>
+        <li><a href="#principios">Princípios</a></li>
+        <li><a href="#estrutura">Estrutura</a></li>
+        <li><a href="#pdca">PDCA</a></li>
+        <li><a href="#implementacao">Implementação</a></li>
+        <li><a href="#midia">Mídia</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu" id="navToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-content">
+      <p class="hero-label">Norma Internacional</p>
+      <h1>ISO <span>9001</span><br/>:2015</h1>
+      <p class="hero-sub">Sistema de Gestão da Qualidade</p>
+      <p class="hero-desc">
+        A referência global para organizações que buscam excelência,
+        consistência e a satisfação plena de seus clientes.
+      </p>
+      <a href="#o-que-e" class="btn-primary">Conhecer a norma</a>
+    </div>
+    <div class="hero-badge">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="2" opacity="0.2"/>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" stroke-width="1" opacity="0.15"/>
+        <text x="100" y="88" text-anchor="middle" class="badge-iso">ISO</text>
+        <text x="100" y="122" text-anchor="middle" class="badge-num">9001</text>
+        <text x="100" y="148" text-anchor="middle" class="badge-year">2015</text>
+      </svg>
+    </div>
+  </header>
+
+  <!-- SECTION: O QUE É -->
+  <section id="o-que-e" class="section">
+    <div class="container">
+      <div class="section-tag">01</div>
+      <h2>O que é a ISO 9001?</h2>
+      <div class="two-col">
+        <div class="col-text">
+          <p>
+            A <strong>ISO 9001</strong> (International Organization for Standardization)
+            é uma norma internacional que estabelece requisitos para um
+            <strong>Sistema de Gestão da Qualidade (SGQ)</strong>.
+          </p>
+          <p>
+            Seu objetivo principal é demonstrar a capacidade de uma organização
+            em fornecer consistentemente produtos e serviços que atendam aos
+            requisitos do cliente e às exigências legais, visando sempre o
+            <strong>aumento da satisfação do consumidor</strong>.
+          </p>
+        </div>
+        <div class="col-cards">
+          <div class="info-card">
+            <div class="info-icon">&#9670;</div>
+            <h3>Reconhecimento Global</h3>
+            <p>Mais de 1 milhão de certificações em 170+ países.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#9670;</div>
+            <h3>Versão atual: 2015</h3>
+            <p>Estrutura de Alto Nível para fácil integração com outras normas ISO.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: 7 PRINCÍPIOS -->
+  <section id="principios" class="section section-alt">
+    <div class="container">
+      <div class="section-tag">02</div>
+      <h2>Os 7 Princípios da Gestão da Qualidade</h2>
+      <p class="section-intro">
+        A norma é fundamentada em sete pilares essenciais que devem guiar
+        a mentalidade e a cultura da empresa.
+      </p>
+      <div class="principles-grid">
+        <div class="principle-card" data-index="1"><span class="p-num">01</span><h3>Foco no Cliente</h3><p>Atender e superar as necessidades dos clientes.</p></div>
+        <div class="principle-card" data-index="2"><span class="p-num">02</span><h3>Liderança</h3><p>Unidade de propósito e direção em toda a organização.</p></div>
+        <div class="principle-card" data-index="3"><span class="p-num">03</span><h3>Engajamento de Pessoas</h3><p>Valorização e empoderamento de toda a equipe.</p></div>
+        <div class="principle-card" data-index="4"><span class="p-num">04</span><h3>Abordagem de Processo</h3><p>Entender atividades como processos inter-relacionados.</p></div>
+        <div class="principle-card" data-index="5"><span class="p-num">05</span><h3>Melhoria</h3><p>Foco contínuo na evolução do desempenho.</p></div>
+        <div class="principle-card" data-index="6"><span class="p-num">06</span><h3>Decisão por Evidências</h3><p>Análise de dados e informações reais como base para decisões.</p></div>
+        <div class="principle-card" data-index="7"><span class="p-num">07</span><h3>Gestão de Relacionamento</h3><p>Gerenciar interações com partes interessadas, como fornecedores.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: ESTRUTURA REQUISITOS -->
+  <section id="estrutura" class="section">
+    <div class="container">
+      <div class="section-tag">03</div>
+      <h2>Estrutura dos Requisitos</h2>
+      <p class="section-intro">
+        A versão 2015 utiliza a <strong>Estrutura de Alto Nível (Anexo SL)</strong>,
+        facilitando a integração com outras normas ISO. Os requisitos auditáveis
+        estão divididos nas seções 4 a 10.
+      </p>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-num">4</div><div class="tl-body"><h3>Contexto da Organização</h3><p>Determinar questões internas/externas e definir o escopo do SGQ.</p></div></div>
+        <div class="tl-item"><div class="tl-num">5</div><div class="tl-body"><h3>Liderança</h3><p>Compromisso da alta direção e definição da Política da Qualidade.</p></div></div>
+        <div class="tl-item"><div class="tl-num">6</div><div class="tl-body"><h3>Planejamento</h3><p>Abordagem de <strong>riscos e oportunidades</strong> e objetivos da qualidade.</p></div></div>
+        <div class="tl-item"><div class="tl-num">7</div><div class="tl-body"><h3>Apoio</h3><p>Gestão de recursos, competência, conscientização e <strong>comunicação</strong>.</p></div></div>
+        <div class="tl-item"><div class="tl-num">8</div><div class="tl-body"><h3>Operação</h3><p>Planejamento, controle operacional e requisitos para produtos/serviços.</p></div></div>
+        <div class="tl-item"><div class="tl-num">9</div><div class="tl-body"><h3>Avaliação de Desempenho</h3><p>Monitoramento, medição, auditoria interna e análise crítica pela direção.</p></div></div>
+        <div class="tl-item"><div class="tl-num">10</div><div class="tl-body"><h3>Melhoria</h3><p>Tratamento de não conformidades, ações corretivas e melhoria contínua.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: PDCA -->
+  <section id="pdca" class="section section-alt">
+    <div class="container">
+      <div class="section-tag">04</div>
+      <h2>Ciclo PDCA &amp; Mentalidade de Risco</h2>
+      <div class="two-col two-col-center">
+        <div class="col-text">
+          <p>A norma promove a aplicação do ciclo <strong>PDCA</strong> em todos os processos da organização, criando uma cultura de melhoria contínua.</p>
+          <p>A <strong>mentalidade de risco</strong> é um conceito central que substitui a antiga "ação preventiva", permitindo que o SGQ funcione como ferramenta proativa para minimizar efeitos negativos e maximizar oportunidades.</p>
+        </div>
+        <div class="pdca-diagram">
+          <div class="pdca-ring">
+            <div class="pdca-step pdca-p" id="pdca-p"><span class="pdca-letter">P</span><span class="pdca-word">Planejar</span></div>
+            <div class="pdca-step pdca-d" id="pdca-d"><span class="pdca-letter">D</span><span class="pdca-word">Fazer</span></div>
+            <div class="pdca-step pdca-c" id="pdca-c"><span class="pdca-letter">C</span><span class="pdca-word">Checar</span></div>
+            <div class="pdca-step pdca-a" id="pdca-a"><span class="pdca-letter">A</span><span class="pdca-word">Agir</span></div>
+            <div class="pdca-center"><span>Melhoria<br/>Contínua</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: IMPLEMENTAÇÃO -->
+  <section id="implementacao" class="section">
+    <div class="container">
+      <div class="section-tag">05</div>
+      <h2>Passo a Passo para a Implementação</h2>
+      <p class="section-intro">Para alcançar a excelência e a certificação, a organização deve seguir três passos fundamentais.</p>
+      <div class="steps-row">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-content"><h3>Conhecer a Norma</h3><p>Estudar profundamente os requisitos e buscar treinamento especializado para toda a equipe envolvida.</p></div>
+          <div class="step-arrow">→</div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-content"><h3>Comprometimento da Alta Direção</h3><p>Garantir recursos financeiros, tempo e o engajamento de todas as pessoas da organização.</p></div>
+          <div class="step-arrow">→</div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-content"><h3>Planejamento e Auditorias</h3><p>Definir o escopo, implementar processos via PDCA, realizar <strong>auditorias internas</strong> e contratar organismo certificador.</p></div>
+          <div class="step-arrow" style="visibility:hidden">→</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: MÍDIA -->
+  <section id="midia" class="section section-alt">
+    <div class="container">
+      <div class="section-tag">06</div>
+      <h2>Materiais de Apoio</h2>
+      <p class="section-intro">Recursos visuais e documentos para aprofundar seu conhecimento sobre a norma.</p>
+      <div class="media-grid">
+        <div class="media-card">
+          <div class="media-thumb media-thumb-img">
+            <img src="Jornada da Qualidade ISO 9001 (3).png" alt="Infográfico — Jornada da Qualidade ISO 9001" loading="lazy"/>
+            <button class="thumb-expand" aria-label="Ampliar imagem" data-lightbox="Jornada da Qualidade ISO 9001 (3).png">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+          <div class="media-info"><span class="media-type">Infográfico</span><h3>Jornada da Qualidade</h3><p>Visualize o caminho completo para a implementação da ISO 9001.</p></div>
+        </div>
+        <div class="media-card">
+          <div class="media-thumb media-thumb-img">
+            <img src="unnamed (5).png" alt="Material visual ISO 9001" loading="lazy"/>
+            <button class="thumb-expand" aria-label="Ampliar imagem" data-lightbox="unnamed (5).png">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+          <div class="media-info"><span class="media-type">Diagrama</span><h3>Visão Geral do SGQ</h3><p>Diagrama ilustrativo dos componentes do Sistema de Gestão da Qualidade.</p></div>
+        </div>
+        <div class="media-card">
+          <div class="media-thumb media-thumb-pdf">
+            <svg viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="64" height="80" rx="6" fill="currentColor" opacity="0.08"/>
+              <path d="M14 6h28l12 12v56H14V6z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M42 6v12h12" fill="none" stroke="currentColor" stroke-width="2"/>
+              <text x="32" y="52" text-anchor="middle" class="pdf-label">PDF</text>
+            </svg>
+          </div>
+          <div class="media-info">
+            <span class="media-type">Documento</span><h3>Performance Engine</h3>
+            <p>Guia completo sobre a ISO 9001 como motor de desempenho organizacional.</p>
+            <a href="ISO_9001_Performance_Engine.pdf" target="_blank" class="btn-secondary">Abrir PDF →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>ISO 9001:2015 — Sistema de Gestão da Qualidade</p>
+      <p class="footer-sub">Conteúdo baseado em pesquisa via NotebookLM &nbsp;·&nbsp; 2025</p>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+  <script>
+// NAV toggle
+const navToggle = document.getElementById('navToggle');
+const navLinks  = document.querySelector('.nav-links');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// Active nav link
+const sections = document.querySelectorAll('section[id], header[id]');
+const allNavLinks = document.querySelectorAll('.nav-links a');
+function setActiveLink() {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+  allNavLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${current}`));
+}
+window.addEventListener('scroll', setActiveLink, { passive: true });
+setActiveLink();
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const delay = el.dataset.index ? (parseInt(el.dataset.index) - 1) * 80 : 0;
+      setTimeout(() => el.classList.add('visible'), delay);
+      observer.unobserve(el);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.principle-card').forEach(el => observer.observe(el));
+document.querySelectorAll('.tl-item').forEach((el, i) => { el.style.transitionDelay = `${i*80}ms`; observer.observe(el); });
+document.querySelectorAll('.step-card').forEach((el, i) => { el.style.transitionDelay = `${i*100}ms`; observer.observe(el); });
+
+// PDCA auto-cycle
+const pdcaIds = ['pdca-p','pdca-d','pdca-c','pdca-a'];
+let pdcaIndex = 0, pdcaTimer = null;
+function cyclePdca() {
+  pdcaIds.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.boxShadow = i === pdcaIndex ? '0 0 0 3px rgba(46,124,246,0.5)' : '';
+    el.style.transform  = i === pdcaIndex ? 'scale(1.07)' : '';
+  });
+  pdcaIndex = (pdcaIndex + 1) % pdcaIds.length;
+}
+const pdcaObserver = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) { if (!pdcaTimer) pdcaTimer = setInterval(cyclePdca, 900); }
+  else { clearInterval(pdcaTimer); pdcaTimer = null; pdcaIds.forEach(id => { const el = document.getElementById(id); if(el){el.style.boxShadow='';el.style.transform='';} }); }
+}, { threshold: 0.4 });
+const pdcaSection = document.getElementById('pdca');
+if (pdcaSection) pdcaObserver.observe(pdcaSection);
+document.querySelector('.pdca-ring')?.addEventListener('mouseenter', () => { clearInterval(pdcaTimer); pdcaTimer=null; pdcaIds.forEach(id=>{const el=document.getElementById(id);if(el){el.style.boxShadow='';el.style.transform='';}}) });
+
+// PDCA hover dim
+const pdcaSteps = document.querySelectorAll('.pdca-step');
+pdcaSteps.forEach(step => {
+  step.addEventListener('mouseenter', () => pdcaSteps.forEach(s => { if(s!==step) s.style.opacity='0.45'; }));
+  step.addEventListener('mouseleave', () => pdcaSteps.forEach(s => s.style.opacity=''));
+});
+
+// Lightbox
+const lightbox    = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+document.querySelectorAll('.thumb-expand').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    lightboxImg.src = btn.dataset.lightbox;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow=''; setTimeout(()=>{lightboxImg.src=''},300); }
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => { if(e.target===lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+
+// Logo scroll top
+document.querySelector('.nav-logo')?.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+  </script>
+</body>
+</html>
