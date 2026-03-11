@@ -1,0 +1,31 @@
+】### 1. O que é a ISO 9001?
+A ISO 9001 (International Organization for Standardization) é uma norma internacional que estabelece requisitos para um **Sistema de Gestão da Qualidade (SGQ)**. Seu objetivo principal é demonstrar a capacidade de uma organização em fornecer consistentemente produtos e serviços que atendam aos requisitos do cliente e às exigências legais, visando sempre o **aumento da satisfação do consumidor**.
+
+### 2. Os 7 Princípios da Gestão da Qualidade
+A norma é fundamentada em sete pilares essenciais que devem guiar a mentalidade da empresa:
+1.  **Foco no cliente**: Atender e superar as necessidades dos clientes.
+2.  **Liderança**: Unidade de propósito e direção.
+3.  **Engajamento de pessoas**: Valorização e empoderamento da equipe.
+4.  **Abordagem de processo**: Entender atividades como processos inter-relacionados.
+5.  **Melhoria**: Foco contínuo na evolução do desempenho.
+6.  **Tomada de decisão baseada em evidências**: Análise de dados e informações reais.
+7.  **Gestão de relacionamento**: Gerenciar interações com partes interessadas, como fornecedores.
+
+### 3. Estrutura dos Requisitos (Anexo SL)
+A versão 2015 utiliza a **Estrutura de Alto Nível (Anexo SL)**, que facilita a integração com outras normas ISO. Os requisitos auditáveis estão divididos nas seções 4 a 10:
+*   **Seção 4 - Contexto da Organização**: Determinar questões internas/externas e o escopo do SGQ.
+*   **Seção 5 - Liderança**: Compromisso da alta direção e definição da Política da Qualidade.
+*   **Seção 6 - Planejamento**: Abordagem de **riscos e oportunidades** e definição de objetivos da qualidade.
+*   **Seção 7 - Apoio**: Gestão de recursos, competência, conscientização e **comunicação**.
+*   **Seção 8 - Operação**: Planejamento, controle operacional e requisitos para produtos/serviços.
+*   **Seção 9 - Avaliação de Desempenho**: Monitoramento, medição, auditoria interna e análise crítica pela direção.
+*   **Seção 10 - Melhoria**: Tratamento de não conformidades, ações corretivas e melhoria contínua.
+
+### 4. Ciclo PDCA e Mentalidade de Risco
+A norma promove a aplicação do ciclo **PDCA (Planejar, Fazer, Checar e Agir)** em todos os processos. A **mentalidade de risco** é um conceito central que substitui a antiga "ação preventiva", permitindo que a empresa use o SGQ como uma ferramenta preventiva para minimizar efeitos negativos e maximizar oportunidades.
+
+### 5. Passo a Passo para a Implementação
+Para alcançar a excelência e a certificação, a organização deve seguir três passos fundamentais:
+1.  **Conhecer a Norma**: Estudar profundamente os requisitos e buscar treinamento especializado.
+2.  **Comprometimento da Alta Direção**: Garantir recursos financeiros, tempo e o engajamento de todas as pessoas.
+3.  **Planejamento e Auditorias**: Definir o escopo, implementar processos via PDCA, realizar **auditorias internas** e, finalmente, contratar um organismo certificador para a auditoria de certificação.
