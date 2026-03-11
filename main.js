@@ -137,7 +137,7 @@ for (let i = 0; i < TOTAL; i++) {
   const thumb = document.createElement('div');
   thumb.className = 'thumb' + (i === 0 ? ' active' : '');
   const img = document.createElement('img');
-  img.src = `slides/slide-${String(i + 1).padStart(2, '0')}.png`;
+  img.src = `img/slides/slide-${String(i + 1).padStart(2, '0')}.png`;
   img.alt = SLIDE_CAPTIONS[i];
   img.loading = 'lazy';
   thumb.appendChild(img);
