@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ISO 9001:2015 — Sistema de Gestão da Qualidade</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <span class="nav-logo">ISO <strong>9001</strong></span>
+      <ul class="nav-links">
+        <li><a href="#o-que-e">O que é</a></li>
+        <li><a href="#principios">Princípios</a></li>
+        <li><a href="#estrutura">Estrutura</a></li>
+        <li><a href="#pdca">PDCA</a></li>
+        <li><a href="#implementacao">Implementação</a></li>
+        <li><a href="#midia">Mídia</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu" id="navToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-content">
+      <p class="hero-label">Norma Internacional</p>
+      <h1>ISO <span>9001</span><br/>:2015</h1>
+      <p class="hero-sub">Sistema de Gestão da Qualidade</p>
+      <p class="hero-desc">
+        A referência global para organizações que buscam excelência,
+        consistência e a satisfação plena de seus clientes.
+      </p>
+      <a href="#o-que-e" class="btn-primary">Conhecer a norma</a>
+    </div>
+    <div class="hero-badge">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="2" opacity="0.2"/>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" stroke-width="1" opacity="0.15"/>
+        <text x="100" y="88" text-anchor="middle" class="badge-iso">ISO</text>
+        <text x="100" y="122" text-anchor="middle" class="badge-num">9001</text>
+        <text x="100" y="148" text-anchor="middle" class="badge-year">2015</text>
+      </svg>
+    </div>
+  </header>
+
+  <!-- SECTION: O QUE É -->
+  <section id="o-que-e" class="section">
+    <div class="container">
+      <div class="section-tag">01</div>
+      <h2>O que é a ISO 9001?</h2>
+      <div class="two-col">
+        <div class="col-text">
+          <p>
+            A <strong>ISO 9001</strong> (International Organization for Standardization)
+            é uma norma internacional que estabelece requisitos para um
+            <strong>Sistema de Gestão da Qualidade (SGQ)</strong>.
+          </p>
+          <p>
+            Seu objetivo principal é demonstrar a capacidade de uma organização
+            em fornecer consistentemente produtos e serviços que atendam aos
+            requisitos do cliente e às exigências legais, visando sempre o
+            <strong>aumento da satisfação do consumidor</strong>.
+          </p>
+        </div>
+        <div class="col-cards">
+          <div class="info-card">
+            <div class="info-icon">&#9670;</div>
+            <h3>Reconhecimento Global</h3>
+            <p>Mais de 1 milhão de certificações em 170+ países.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#9670;</div>
+            <h3>Versão atual: 2015</h3>
+            <p>Estrutura de Alto Nível para fácil integração com outras normas ISO.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: 7 PRINCÍPIOS -->
+  <section id="principios" class="section section-alt">
+    <div class="container">
+      <div class="section-tag">02</div>
+      <h2>Os 7 Princípios da Gestão da Qualidade</h2>
+      <p class="section-intro">
+        A norma é fundamentada em sete pilares essenciais que devem guiar
+        a mentalidade e a cultura da empresa.
+      </p>
+      <div class="principles-grid" id="principlesGrid">
+        <div class="principle-card" data-index="1">
+          <span class="p-num">01</span>
+          <h3>Foco no Cliente</h3>
+          <p>Atender e superar as necessidades dos clientes.</p>
+        </div>
+        <div class="principle-card" data-index="2">
+          <span class="p-num">02</span>
+          <h3>Liderança</h3>
+          <p>Unidade de propósito e direção em toda a organização.</p>
+        </div>
+        <div class="principle-card" data-index="3">
+          <span class="p-num">03</span>
+          <h3>Engajamento de Pessoas</h3>
+          <p>Valorização e empoderamento de toda a equipe.</p>
+        </div>
+        <div class="principle-card" data-index="4">
+          <span class="p-num">04</span>
+          <h3>Abordagem de Processo</h3>
+          <p>Entender atividades como processos inter-relacionados.</p>
+        </div>
+        <div class="principle-card" data-index="5">
+          <span class="p-num">05</span>
+          <h3>Melhoria</h3>
+          <p>Foco contínuo na evolução do desempenho.</p>
+        </div>
+        <div class="principle-card" data-index="6">
+          <span class="p-num">06</span>
+          <h3>Decisão por Evidências</h3>
+          <p>Análise de dados e informações reais como base para decisões.</p>
+        </div>
+        <div class="principle-card" data-index="7">
+          <span class="p-num">07</span>
+          <h3>Gestão de Relacionamento</h3>
+          <p>Gerenciar interações com partes interessadas, como fornecedores.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: ESTRUTURA REQUISITOS -->
+  <section id="estrutura" class="section">
+    <div class="container">
+      <div class="section-tag">03</div>
+      <h2>Estrutura dos Requisitos</h2>
+      <p class="section-intro">
+        A versão 2015 utiliza a <strong>Estrutura de Alto Nível (Anexo SL)</strong>,
+        facilitando a integração com outras normas ISO. Os requisitos auditáveis
+        estão divididos nas seções 4 a 10.
+      </p>
+      <div class="timeline" id="timeline">
+        <div class="tl-item">
+          <div class="tl-num">4</div>
+          <div class="tl-body">
+            <h3>Contexto da Organização</h3>
+            <p>Determinar questões internas/externas e definir o escopo do SGQ.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-num">5</div>
+          <div class="tl-body">
+            <h3>Liderança</h3>
+            <p>Compromisso da alta direção e definição da Política da Qualidade.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-num">6</div>
+          <div class="tl-body">
+            <h3>Planejamento</h3>
+            <p>Abordagem de <strong>riscos e oportunidades</strong> e objetivos da qualidade.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-num">7</div>
+          <div class="tl-body">
+            <h3>Apoio</h3>
+            <p>Gestão de recursos, competência, conscientização e <strong>comunicação</strong>.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-num">8</div>
+          <div class="tl-body">
+            <h3>Operação</h3>
+            <p>Planejamento, controle operacional e requisitos para produtos/serviços.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-num">9</div>
+          <div class="tl-body">
+            <h3>Avaliação de Desempenho</h3>
+            <p>Monitoramento, medição, auditoria interna e análise crítica pela direção.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-num">10</div>
+          <div class="tl-body">
+            <h3>Melhoria</h3>
+            <p>Tratamento de não conformidades, ações corretivas e melhoria contínua.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: PDCA -->
+  <section id="pdca" class="section section-alt">
+    <div class="container">
+      <div class="section-tag">04</div>
+      <h2>Ciclo PDCA &amp; Mentalidade de Risco</h2>
+      <div class="two-col two-col-center">
+        <div class="col-text">
+          <p>
+            A norma promove a aplicação do ciclo <strong>PDCA</strong> em todos
+            os processos da organização, criando uma cultura de melhoria contínua.
+          </p>
+          <p>
+            A <strong>mentalidade de risco</strong> é um conceito central que
+            substitui a antiga "ação preventiva", permitindo que o SGQ funcione
+            como ferramenta proativa para minimizar efeitos negativos e
+            maximizar oportunidades.
+          </p>
+        </div>
+        <div class="pdca-diagram" id="pdcaDiagram">
+          <div class="pdca-ring">
+            <div class="pdca-step pdca-p" id="pdca-p">
+              <span class="pdca-letter">P</span>
+              <span class="pdca-word">Planejar</span>
+            </div>
+            <div class="pdca-step pdca-d" id="pdca-d">
+              <span class="pdca-letter">D</span>
+              <span class="pdca-word">Fazer</span>
+            </div>
+            <div class="pdca-step pdca-c" id="pdca-c">
+              <span class="pdca-letter">C</span>
+              <span class="pdca-word">Checar</span>
+            </div>
+            <div class="pdca-step pdca-a" id="pdca-a">
+              <span class="pdca-letter">A</span>
+              <span class="pdca-word">Agir</span>
+            </div>
+            <div class="pdca-center">
+              <span>Melhoria<br/>Contínua</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: IMPLEMENTAÇÃO -->
+  <section id="implementacao" class="section">
+    <div class="container">
+      <div class="section-tag">05</div>
+      <h2>Passo a Passo para a Implementação</h2>
+      <p class="section-intro">
+        Para alcançar a excelência e a certificação, a organização deve
+        seguir três passos fundamentais.
+      </p>
+      <div class="steps-row">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Conhecer a Norma</h3>
+            <p>
+              Estudar profundamente os requisitos e buscar treinamento
+              especializado para toda a equipe envolvida.
+            </p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Comprometimento da Alta Direção</h3>
+            <p>
+              Garantir recursos financeiros, tempo e o engajamento de
+              todas as pessoas da organização.
+            </p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Planejamento e Auditorias</h3>
+            <p>
+              Definir o escopo, implementar processos via PDCA, realizar
+              <strong>auditorias internas</strong> e contratar organismo
+              certificador para a auditoria de certificação.
+            </p>
+          </div>
+          <div class="step-arrow" style="visibility:hidden">→</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: MÍDIA -->
+  <section id="midia" class="section section-alt">
+    <div class="container">
+      <div class="section-tag">06</div>
+      <h2>Materiais de Apoio</h2>
+      <p class="section-intro">
+        Recursos visuais e documentos para aprofundar seu conhecimento sobre a norma.
+      </p>
+      <div class="media-grid">
+        <!-- Infográfico -->
+        <div class="media-card" id="mediaInfographic">
+          <div class="media-thumb media-thumb-img" data-src="Jornada da Qualidade ISO 9001 (3).png">
+            <img
+              src="Jornada da Qualidade ISO 9001 (3).png"
+              alt="Infográfico — Jornada da Qualidade ISO 9001"
+              loading="lazy"
+            />
+            <button class="thumb-expand" aria-label="Ampliar imagem" data-lightbox="Jornada da Qualidade ISO 9001 (3).png">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+          <div class="media-info">
+            <span class="media-type">Infográfico</span>
+            <h3>Jornada da Qualidade</h3>
+            <p>Visualize o caminho completo para a implementação da ISO 9001.</p>
+          </div>
+        </div>
+
+        <!-- Imagem unnamed -->
+        <div class="media-card">
+          <div class="media-thumb media-thumb-img">
+            <img
+              src="unnamed (5).png"
+              alt="Material visual ISO 9001"
+              loading="lazy"
+            />
+            <button class="thumb-expand" aria-label="Ampliar imagem" data-lightbox="unnamed (5).png">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+          <div class="media-info">
+            <span class="media-type">Diagrama</span>
+            <h3>Visão Geral do SGQ</h3>
+            <p>Diagrama ilustrativo dos componentes do Sistema de Gestão da Qualidade.</p>
+          </div>
+        </div>
+
+        <!-- PDF -->
+        <div class="media-card">
+          <div class="media-thumb media-thumb-pdf">
+            <svg viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="64" height="80" rx="6" fill="currentColor" opacity="0.08"/>
+              <path d="M14 6h28l12 12v56H14V6z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M42 6v12h12" fill="none" stroke="currentColor" stroke-width="2"/>
+              <text x="32" y="52" text-anchor="middle" class="pdf-label">PDF</text>
+            </svg>
+          </div>
+          <div class="media-info">
+            <span class="media-type">Documento</span>
+            <h3>Performance Engine</h3>
+            <p>Guia completo sobre a ISO 9001 como motor de desempenho organizacional.</p>
+            <a href="ISO_9001_Performance_Engine.pdf" target="_blank" class="btn-secondary">
+              Abrir PDF →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>ISO 9001:2015 — Sistema de Gestão da Qualidade</p>
+      <p class="footer-sub">Conteúdo baseado em pesquisa via NotebookLM &nbsp;·&nbsp; 2025</p>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Visualizador de imagem">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Fechar">&times;</button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
